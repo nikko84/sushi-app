@@ -1,21 +1,36 @@
 import React from "react";
 import { string } from "prop-types";
+import { Badge, Avatar, AppBar, Toolbar, Typography } from "@material-ui/core";
+import useStyles from "./useStyles";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 import sushiLoto from "./logoSushi.jpg";
 
-import { Logo, Title, Wrapper, Badge } from "./styles";
+// import { Logo, Title, Wrapper, Badge } from "./styles";
 
 const websiteTitle = "super suhi";
 
-export default function Header({ logo, title }) {
+export default function Header({ title }) {
+  const classes = useStyles();
+
   return (
-    <Wrapper>
-      <Logo src={sushiLoto} alt={websiteTitle}></Logo>
-      <Title>
-        {websiteTitle} - {title}
-      </Title>
-      <Badge>3</Badge>
-    </Wrapper>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <Avatar
+            alt={{ websiteTitle } - { title }}
+            src={sushiLoto}
+            className={classes.logo}
+          />
+          <Typography variant="h6" className={classes.title}>
+            {websiteTitle} - {title}
+          </Typography>
+          <Badge badgeContent={17} color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 }
 
