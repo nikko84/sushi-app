@@ -25,10 +25,12 @@ export default function SushiCard({ image, title, description, beginAt }) {
 
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media} image={image} title={title} />
+      {image && (
+        <CardMedia className={classes.media} image={image} title={title} />
+      )}
       <CardContent>
         <Typography variant="h5" component="h2">
-          {title}
+          {title || "anonymous"}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {description}
@@ -50,8 +52,6 @@ SushiCard.propTypes = {
 };
 
 SushiCard.defaultProps = {
-  image:
-    "https://www.cookomix.com/wp-content/uploads/2018/05/sushis-thermomix-800x600.jpg",
   title: "Makiii",
   description: "super sushi saumon avocat",
   beginAt: 0,
