@@ -2,7 +2,7 @@ import React from "react";
 
 import { string } from "prop-types";
 import { IndeterminateCheckBox, AddBox } from "@material-ui/icons";
-
+import { number } from "prop-types";
 import {
   CardContent,
   Card,
@@ -10,14 +10,16 @@ import {
   Typography,
   CardMedia,
   CardActions,
-  TextField,
+  Input,
   IconButton,
 } from "@material-ui/core";
 
 import useStyles from "./styles";
+import { useCounter } from "react-use";
 
-export default function SushiCard({ image, title, description }) {
+export default function SushiCard({ image, title, description, beginAt }) {
   const classes = useStyles();
+  const [quantity, { inc, dec }] = useCounter(0, 10, 0);
 
   return (
     <Card className={classes.root}>
@@ -29,11 +31,15 @@ export default function SushiCard({ image, title, description }) {
         <Typography variant="body2" color="textSecondary" component="p">
           {description}
         </Typography>
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={() => dec()}>
           <IndeterminateCheckBox />
         </IconButton>
-        <TextField></TextField>
-        <IconButton aria-label="add">
+        <Input
+          name="quantity"
+          value={quantity}
+          inputProps={{ "aria-label": "quantity" }}
+        />
+        <IconButton aria-label="add" onClick={() => inc()}>
           <AddBox />
         </IconButton>
       </CardContent>
@@ -48,6 +54,7 @@ SushiCard.propTypes = {
   image: string,
   title: string,
   description: string,
+  beginAt: number,
 };
 
 SushiCard.defaultProps = {
@@ -55,4 +62,5 @@ SushiCard.defaultProps = {
     "https://www.cookomix.com/wp-content/uploads/2018/05/sushis-thermomix-800x600.jpg",
   title: "Makiii",
   description: "super sushi saumon avocat",
+  beginAt: 0,
 };
