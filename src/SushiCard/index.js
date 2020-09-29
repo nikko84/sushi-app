@@ -1,7 +1,7 @@
 import React from "react";
 
 import { string } from "prop-types";
-import { IndeterminateCheckBox, AddBox } from "@material-ui/icons";
+
 import { number } from "prop-types";
 import {
   CardContent,
@@ -10,16 +10,18 @@ import {
   Typography,
   CardMedia,
   CardActions,
-  Input,
-  IconButton,
 } from "@material-ui/core";
 
 import useStyles from "./styles";
+import QuantityInput from "./QuantityInput";
 import { useCounter } from "react-use";
+
+import config from "react-global-configuration";
 
 export default function SushiCard({ image, title, description, beginAt }) {
   const classes = useStyles();
-  const [quantity, { inc, dec, set }] = useCounter(0, 10, 0);
+  const { max, min, defaultValue } = config.get("quantity");
+  const [quantity, { inc, dec, set }] = useCounter(defaultValue, max, min);
 
   return (
     <Card className={classes.root}>
@@ -31,18 +33,7 @@ export default function SushiCard({ image, title, description, beginAt }) {
         <Typography variant="body2" color="textSecondary" component="p">
           {description}
         </Typography>
-        <IconButton aria-label="delete" onClick={() => dec()}>
-          <IndeterminateCheckBox />
-        </IconButton>
-        <Input
-          name="quantity"
-          value={quantity}
-          onChange={(event) => set(event.target.value)}
-          inputProps={{ "aria-label": "quantity" }}
-        />
-        <IconButton aria-label="add" onClick={() => inc()}>
-          <AddBox />
-        </IconButton>
+        <QuantityInput quantity={quantity} inc={inc} dec={dec} set={set} />
       </CardContent>
       <CardActions disableSpacing>
         <Button size="small">Learn More</Button>
