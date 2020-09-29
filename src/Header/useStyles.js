@@ -13,4 +13,5 @@ export default makeStyles((theme) => ({
   logo: {
     marginRight: theme.spacing(2),
   },
+  offset: theme.mixins.toolbar,
 }));

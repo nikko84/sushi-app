@@ -4,7 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 import Header from "../Header";
 import theme from "./theme";
-import SushiCard from "../SushiCard";
+import SushiCardList from "../SushiCardList";
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
       <CssBaseline />
       <Header title="sushi trop cool" />
       <article>
-        <SushiCard />
+        <SushiCardList />
       </article>
     </ThemeProvider>
   );

@@ -16,7 +16,7 @@ export default function Header({ title }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <Avatar alt={fullTitle} src={sushiLoto} className={classes.logo} />
           <Typography variant="h6" className={classes.title}>
@@ -27,6 +27,7 @@ export default function Header({ title }) {
           </Badge>
         </Toolbar>
       </AppBar>
+      <div className={classes.offset} />
     </div>
   );
 }
