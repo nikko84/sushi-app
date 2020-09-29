@@ -12,18 +12,15 @@ const websiteTitle = "super suhi";
 
 export default function Header({ title }) {
   const classes = useStyles();
+  const fullTitle = `${websiteTitle} - ${title}`;
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Avatar
-            alt={{ websiteTitle } - { title }}
-            src={sushiLoto}
-            className={classes.logo}
-          />
+          <Avatar alt={fullTitle} src={sushiLoto} className={classes.logo} />
           <Typography variant="h6" className={classes.title}>
-            {websiteTitle} - {title}
+            {fullTitle}
           </Typography>
           <Badge badgeContent={17} color="secondary">
             <ShoppingCartIcon />
