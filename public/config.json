@@ -4,5 +4,5 @@
     "min": 1,
     "defaultValue": 1
   },
-  "baseUri": "http://localhost:3004"
+  "baseUri": "http://my-json-server.typicode.com/nikko84/sushi-app/db"
 }
