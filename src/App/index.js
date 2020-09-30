@@ -3,8 +3,7 @@ import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import HomeScreen from "../HomeScreen";
-import BasketScreen from "../BasketScreen";
+import routes from "./routes";
 import theme from "./theme";
 
 export default function App() {
@@ -13,8 +12,10 @@ export default function App() {
       <CssBaseline />
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={HomeScreen} />
-          <Route exact path="/basket" component={BasketScreen} />
+          {Object.keys(routes).map((routeName) => {
+            const { path, component } = routes[routeName];
+            return <Route exact path={path} component={component} key={path} />;
+          })}
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
