@@ -17,6 +17,7 @@ export default function HomeScreen() {
           variant="outlined"
           value={search}
           onChange={handleChangeBar}
+          fullWidth
         />
         <SushiCardList search={search} />
       </article>
