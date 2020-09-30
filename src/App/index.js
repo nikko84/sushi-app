@@ -1,19 +1,22 @@
 import React from "react";
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Header from "../Header";
+import HomeScreen from "../HomeScreen";
+import BasketScreen from "../BasketScreen";
 import theme from "./theme";
-import SushiCardList from "../SushiCardList";
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header title="sushi trop cool" />
-      <article>
-        <SushiCardList />
-      </article>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/basket" component={BasketScreen} />
+        </Switch>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
