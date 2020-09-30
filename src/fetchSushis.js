@@ -1,9 +1,9 @@
 import config from "react-global-configuration";
 
-const responseToJson = (response) => response.json();
-
-export default function fetchSushis(route) {
+export default async function fetchSushis(route) {
   const baseUri = config.get("baseUri");
+  const response = await fetch(`${baseUri}${route}`);
+  if (!response.ok) throw new Error("error");
 
-  return fetch(`${baseUri}${route}`).then(responseToJson);
+  return response.json();
 }
