@@ -30,6 +30,9 @@ export default function Header({ title, basketCount }) {
               <ShoppingCart />
             </Badge>
           </Link>
+          <Link to="/settings" className={classes.settings}>
+            <Settings />
+          </Link>
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />

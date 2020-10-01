@@ -14,4 +14,7 @@ export default makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   offset: theme.mixins.toolbar,
+  settings: {
+    marginLeft: theme.spacing(2),
+  },
 }));

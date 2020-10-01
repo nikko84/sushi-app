@@ -8,7 +8,7 @@ export const BlueButton = styled.button`
   border: 1px solid #124d77;
   display: inline-block;
   cursor: pointer;
-  color: ${({ secondary }) => (secondary ? "blue" : "red")};
+  color: ${({ secondary }) => (secondary ? "White" : "red")};
   font-family: Arial;
   font-size: 13px;
   padding: 6px 24px;
