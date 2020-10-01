@@ -1,7 +1,7 @@
 import React from "react";
 
 import { string, node } from "prop-types";
-import Header from "../Header";
+import Header from "../Header/index";
 
 //import {  } from "@material-ui/icons";
 
