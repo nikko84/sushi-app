@@ -6,9 +6,10 @@ import hasMinLength from "./hasMinLength";
 
 const { minLength } = config.get("search");
 
-export default function useQueryStringSearch() {
+export default function useQueryStringSearch(paramName = "q") {
   const location = useLocation();
-  const { q } = url.parse(location.search, true).query;
+  const params = url.parse(location.search, true).query;
+  const q = params[paramName];
   const [search, setSearch] = React.useState(q || "");
   let history = useHistory();
 
@@ -16,7 +17,7 @@ export default function useQueryStringSearch() {
     const q = event.target.value;
     setSearch(q);
     if (hasMinLength(q, minLength)) {
-      history.replace(`?q=${q}`);
+      history.replace(`?${paramName}=${q}`);
     } else {
       history.replace("");
     }
