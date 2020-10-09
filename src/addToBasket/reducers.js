@@ -1,26 +1,20 @@
 import { ADD_TO_BASKET } from "./actions";
-const initialState = {
-  basket: [],
-};
+const initialState = [];
 
-export function basketReducer(state = initialState, action) {
+export function basket(state = initialState, action) {
   switch (action.type) {
     case ADD_TO_BASKET:
       const { sushiId, count } = action.payload;
       let basket;
-      const itemIndex = state.basket.findIndex(
-        (item) => item.sushiId === sushiId
-      );
+      const itemIndex = state.findIndex((item) => item.sushiId === sushiId);
       if (itemIndex === -1) {
-        basket = [...state.basket, { sushiId, count }];
+        basket = [...state, { sushiId, count }];
       } else {
-        basket = [...state.basket];
+        basket = [...state];
         basket[itemIndex].count += count;
       }
 
-      return Object.assign({}, state, {
-        basket,
-      });
+      return basket;
 
     default:
       return state;

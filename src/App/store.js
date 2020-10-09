@@ -1,6 +1,10 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 
-import { basketReducer } from "../addToBasket/reducers";
+import { basket } from "../addToBasket/reducers";
+import { sushis } from "../sushis/reducer";
 
-export default createStore(basketReducer, devToolsEnhancer());
+export default createStore(
+  combineReducers({ basket, sushis }),
+  devToolsEnhancer()
+);
